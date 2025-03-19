@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <link rel="icon" type=
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คำนวณต้นทุนและกำไร</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background:url(https://cdn.pixabay.com/photo/2020/01/04/18/40/trees-4741364_1280.png)no-repeat;
+            background-size: cover;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            width: 350px;
+            margin: auto;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            width: 100%;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button:hover {
+            background: #218838;
+        }
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        <h2>คำนวณต้นทุนและกำไร</h2>
+        <label>ต้นทุนต่อชิ้น (บาท):</label>
+        <input type="number" id="cost" placeholder="เช่น 50">
+        
+        <label>ราคาขายต่อชิ้น (บาท):</label>
+        <input type="number" id="price" placeholder="เช่น 80">
+        
+        <label>จำนวนที่ขายได้:</label>
+        <input type="number" id="quantity" placeholder="เช่น 100">
+        
+        <button onclick="calculateProfit()">คำนวณ</button>
+        
+        <div class="result" id="profitResult"></div>
+    </div>
+
+    <script>
+        function calculateProfit() {
+            let cost = parseFloat(document.getElementById('cost').value);
+            let price = parseFloat(document.getElementById('price').value);
+            let quantity = parseInt(document.getElementById('quantity').value);
+
+            if (isNaN(cost) || isNaN(price) || isNaN(quantity)) {
+                document.getElementById('profitResult').innerText = "กรุณากรอกข้อมูลให้ครบ";
+                return;
+            }
+
+            let profitPerItem = price - cost;
+            let totalProfit = profitPerItem * quantity;
+            
+            document.getElementById('profitResult').innerText = `กำไรทั้งหมด: ${totalProfit.toLocaleString()} บาท`;
+        }
+    </script>
+</body>
+</html>
